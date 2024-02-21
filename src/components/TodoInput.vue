@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue'
 
 export default Vue.extend({
   // props: ["item"],
@@ -19,16 +19,16 @@ export default Vue.extend({
   },
   methods: {
     addTodo() {
-      this.$emit("add");
+      this.$emit('add')
     },
     handleInput(event: InputEvent) {
-      console.warn("event:::", event);
+      console.warn('event:::', event)
       // InputEvent에 접근하는 방법
       // 1. InputEvent 타입의 value 값에 직접 접근하게 되면 null 체크를 해야함
       // 2. event.target as HTMLInputElement : event.target을 HTMLInputElement 타입으로 캐스팅
-      const eventTarget = event.target as HTMLInputElement;
-      this.$emit("input", eventTarget.value);
+      const eventTarget = event.target as HTMLInputElement
+      this.$emit('input', eventTarget.value)
     },
   },
-});
+})
 </script>
