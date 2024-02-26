@@ -1,4 +1,6 @@
 # 인프런 Vue.js with Typescript 강의 실습
+- vue cli로 생성
+- vue2, typescript
 
 ## 개발 환경 구성
 
