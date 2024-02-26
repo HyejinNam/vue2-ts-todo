@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <h1>Vue TODO with Typescript</h1>
+      <h1>Vue with Typescript</h1>
     </header>
     <TodoInput
       :item="todoText"
@@ -30,11 +30,11 @@ import TodoListItem from '@/components/TodoListItem.vue'
 
 const STORAGE_KEY = 'vue-todo-ts-v1'
 const storage = {
-  save(todoItems: any[]) {
+  save(todoItems: Todo[]) {
     const parsed = JSON.stringify(todoItems)
     localStorage.setItem(STORAGE_KEY, parsed)
   },
-  fetch() {
+  fetch(): Todo[] {
     const todoItems = localStorage.getItem(STORAGE_KEY) || '[]'
     const result = JSON.parse(todoItems)
     return result
@@ -77,7 +77,15 @@ export default Vue.extend({
       this.todoText = ''
     },
     fetchTodoItems() {
-      this.todoItems = storage.fetch()
+      this.todoItems = storage.fetch().sort((a, b) => {
+        if (a.title < b.title) {
+          return -1
+        }
+        if (a.title > b.title) {
+          return 1
+        }
+        return 0
+      })
     },
     removeTodoItem(index: number) {
       console.log('remove', index)
